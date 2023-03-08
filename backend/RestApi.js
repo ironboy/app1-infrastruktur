@@ -100,16 +100,6 @@ module.exports = class RestApi {
       x[0] === '-' ? x.slice(1) + ' DESC' : x);
     id && (urlQueryParams = { id });
     let [where, whereVals] = this.whereFromParams(urlQueryParams, ors);
-    console.log(`
-        SELECT * FROM ${tableName} 
-        ${where ? `WHERE ${where}` : ''}
-        ${sort ? ` ORDER BY ${sort}` : ''}
-        ${limit ? ` LIMIT ${limit}` : ''}
-        ${offset ? ` OFFSET ${offset}` : ''}
-      `,
-      [
-        ...(where ? whereVals : [])
-      ])
     let result = await this.runQuery(res,
       `
         SELECT * FROM ${tableName} 
