@@ -21,10 +21,10 @@ CREATE VIEW movies_by_category AS SELECT
 FROM 
 	categories,
 	movies,
-	moviesXCategories
+	moviesXcategories
 WHERE 
-  movies.id = moviesXCategories.movieId
-	&& categories.id = moviesXCategories.categoryId; 
+  movies.id = moviesXcategories.movieId
+	&& categories.id = moviesXcategories.categoryId; 
 
 
 CREATE VIEW screenings_overview AS SELECT 
@@ -70,11 +70,11 @@ CREATE VIEW occupied_seats AS SELECT
 FROM 
 	screenings_overview,
 	seats,
-	bookingsXSeats,
+	bookingsXseats,
 	bookings,
 	seats_per_auditorium
 WHERE
-	seats.id = bookingsXSeats.seatId
+	seats.id = bookingsXseats.seatId
 	&& bookings.id = bookingsXseats.bookingId
 	&& bookings.screeningId = screenings_overview.screeningId
 	&& seats_per_auditorium.name = screenings_overview.auditorium
@@ -86,10 +86,10 @@ CREATE VIEW totals AS SELECT
 	COUNT(*) AS totalPeople,
 	SUM(ticketTypes.price) AS totalSales
   FROM 
-    bookingsXSeats,
+    bookingsXseats,
   	ticketTypes
   WHERE 
-     bookingsXSeats.ticketTypeId = ticketTypes.id
+     bookingsXseats.ticketTypeId = ticketTypes.id
   GROUP BY ticketTypes.id
 UNION 
 SELECT 
@@ -97,7 +97,7 @@ SELECT
 	COUNT(*),
 	SUM(ticketTypes.price) 
   FROM 
-    bookingsXSeats,
+    bookingsXseats,
   	ticketTypes
   WHERE 
-     bookingsXSeats.ticketTypeId = ticketTypes.id
+     bookingsXseats.ticketTypeId = ticketTypes.id
