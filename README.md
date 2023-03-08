@@ -1,7 +1,14 @@
 # app1-infrastruktur
- App att gå live med för deluppgift 1
+App att gå live med för deluppgift 1.
 
-Tips:
+### Seed the database
+
+```
+cd _seed_db
+node seeder.js
+```
+
+### Run production server
 
 1. Run npm install
 2. Run npm run build
