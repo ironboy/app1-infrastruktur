@@ -26,6 +26,6 @@ node seeder.js
 2. Then you should be able to start the  productionserver:
 
 ```
-cd backend, 
+cd backend
 node index.js
 ```
