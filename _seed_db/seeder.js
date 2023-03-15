@@ -20,12 +20,16 @@ console.log(line + 'Seed the DB...' + line);
 const {
   mySqlHost: host,
   mySqlPort: port,
+
+  // see DatabaseQueryer for details on this
+  mySqlSocketPath: socketPath,
+
   mySqlUser: user,
   mySqlPassword: password
 } = require('../settings.json');
 
 // create a connection pool and an async connection 'db
-const dbPool = await mysql.createPool({ host, port, user, password });
+const dbPool = await mysql.createPool({ host, port, socketPath, user, password });
 const db = dbPool.promise();
 
 // wrapper around db.query - so we can console log queries

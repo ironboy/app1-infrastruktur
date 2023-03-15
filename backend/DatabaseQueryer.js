@@ -14,12 +14,30 @@ module.exports = class DatabaseQueryer {
     const {
       mySqlHost: host,
       mySqlPort: port,
+
+      /*
+        if set to null and passed along, 
+        socketPath won't do anything.
+        Currently, behaviour when using socketPath in
+        mysql2 is for the socketPath to override
+        the port and host passed and instead just to connect
+        with the path given. For more details, check out
+        mysql2's source code. At the time of commit
+        6bc64442b402b420145781057c4aebe9618be246
+        this behaviour is defined between lines 47-53 
+        in lib/connection.js. Shorthand view: 
+
+        git clone https://github.com/sidorares/node-mysql2.git
+        sed -n '47,53p' node-mysql2/lib/connection.js
+      */
+      mySqlSocketPath: socketPath,
+
       mySqlUser: user,
       mySqlPassword: password,
       database
     } = require('../settings.json');
 
-    this.dbConnection = mysql.createPool({ host, port, user, password, database });
+    this.dbConnection = mysql.createPool({ host, port, socketPath, user, password, database });
     return this.dbConnection;
   }
 
