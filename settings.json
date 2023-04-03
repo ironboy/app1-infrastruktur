@@ -6,5 +6,7 @@
   "mySqlUser": "root",
   "mySqlPassword": "rootroot",
   "passwordSalt": "someHardToGuessStringYouNeverChange",
-  "sessionSalt": "someHardToGuessStringYouSeldomChange"
+  "sessionSalt": "someHardToGuessStringYouSeldomChange",
+
+  "mySqlSocketPath": null
 }

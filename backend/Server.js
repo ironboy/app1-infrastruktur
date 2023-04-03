@@ -45,6 +45,7 @@ module.exports = class Server {
     this.app.get('*', (req, res) => {
       let indexHtml = path.join(__dirname, '../', 'dist', 'index.html');
       if (!fs.existsSync(indexHtml)) {
+        console.log(indexHtml);
         res.status(404);
         res.send('404: No dist built yet...');
         return;
